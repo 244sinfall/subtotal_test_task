@@ -3,6 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
+// eslint-disable-next-line node/no-unpublished-import
 import type { Config } from 'jest';
 
 const config: Config = {
