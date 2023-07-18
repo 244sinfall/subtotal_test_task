@@ -1,0 +1,12 @@
+{
+  "name": "subtotal_test_task",
+  "version": "1.0.0",
+  "description": "https://github.com/SubtotalRu/subtotal_test_react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
