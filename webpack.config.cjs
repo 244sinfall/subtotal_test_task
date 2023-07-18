@@ -1,18 +1,29 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+const glob = require("glob");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { PurgeCSSPlugin } = require("purgecss-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV === 'production';
-
-const stylesHandler = 'style-loader';
 
 const config = {
     entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: "styles",
+                    test: /\.css$/,
+                    chunks: "all",
+                    enforce: true,
+                },
+            },
+        },
     },
     devServer: {
         open: false,
@@ -33,7 +44,7 @@ const config = {
             },
             {
                 test: /\.css$/i,
-                use: [stylesHandler, 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
@@ -44,6 +55,14 @@ const config = {
     resolve: {
         extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
     },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+        }),
+        new PurgeCSSPlugin({
+            paths: glob.sync(`src/**/*`, { nodir: true }),
+        }),
+    ],
 };
 
 module.exports = () => {
