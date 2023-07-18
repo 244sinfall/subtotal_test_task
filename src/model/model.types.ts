@@ -16,3 +16,9 @@ export type ApiResponse = {
     docs: Launch[];
     totalPages: number;
 };
+
+export type ApiParams = {
+    page: number;
+    sortField?: keyof Launch;
+    sortDirection?: 'asc' | 'desc';
+};

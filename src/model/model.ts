@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ApiResponse } from './model.types';
+import { ApiParams, ApiResponse } from './model.types';
 import DefaultApiQueryParams from './query';
 
 const api = createApi({
@@ -8,8 +8,8 @@ const api = createApi({
         baseUrl: 'https://api.spacexdata.com/v4/launches/query',
     }),
     endpoints: (builder) => ({
-        getLaunchesByPage: builder.query<ApiResponse, number>({
-            query: (page: number) => ({
+        getLaunchesByPage: builder.query<ApiResponse, ApiParams>({
+            query: (params: ApiParams) => ({
                 url: '',
                 method: 'POST',
                 headers: {
@@ -19,7 +19,11 @@ const api = createApi({
                     ...DefaultApiQueryParams,
                     options: {
                         ...DefaultApiQueryParams.options,
-                        page: page,
+                        sort: {
+                            [params.sortField ?? 'date_unix']:
+                                params.sortDirection ?? 'desc',
+                        },
+                        page: params.page,
                     },
                 },
             }),

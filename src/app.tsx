@@ -3,16 +3,17 @@ import './style.css';
 import { useGetLaunchesByPageQuery } from './model/model';
 import MyTable from './components/table';
 import {
-    selectPage,
+    selectParams,
     setPage,
+    setSort,
     useAppDispatch,
     useAppSelector,
 } from './model/store';
 import Pagination from './components/pagination';
 const App = () => {
     const dispatch = useAppDispatch();
-    const page = useAppSelector(selectPage);
-    const { data, isLoading } = useGetLaunchesByPageQuery(page);
+    const params = useAppSelector(selectParams);
+    const { data, isLoading } = useGetLaunchesByPageQuery(params);
     return (
         <>
             {isLoading && <p>Загрузка...</p>}
@@ -58,9 +59,10 @@ const App = () => {
                                 },
                             },
                         }}
+                        onHeaderClick={(key) => dispatch(setSort(key))}
                     />
                     <Pagination
-                        current={page}
+                        current={params.page}
                         total={data.totalPages}
                         first={1}
                         onPaginate={(page) => dispatch(setPage(page))}

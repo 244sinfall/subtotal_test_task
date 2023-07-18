@@ -11,13 +11,29 @@ type TableProps<T extends object> = {
             toHash?: (item: T) => string;
         };
     };
+    onHeaderClick?: (field: keyof T) => void;
 };
 
 const MyTable = <T extends object>(props: TableProps<T>) => {
     const headers = useMemo(() => {
         const data = [];
         for (const key in props.options) {
-            data.push(<th key={key}>{props.options[key].title}</th>);
+            if (
+                Object.keys(props.data[0]).includes(key) &&
+                props.onHeaderClick
+            ) {
+                data.push(
+                    <th
+                        className={'interactive_header'}
+                        onClick={() => props.onHeaderClick(key as keyof T)}
+                        key={key}
+                    >
+                        {props.options[key].title}
+                    </th>
+                );
+            } else {
+                data.push(<th key={key}>{props.options[key].title}</th>);
+            }
         }
         return data;
     }, [props.options]);

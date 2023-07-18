@@ -1,4 +1,4 @@
-div {
-    background: black;
-    color: white;
+.interactive_header {
+    cursor: pointer;
+    user-select: none;
 }
