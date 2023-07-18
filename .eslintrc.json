@@ -1,5 +1,7 @@
 {
   "parserOptions": {
+    "ecmaVersion": 6,
+    "parser": "@typescript-eslint/parser",
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true,
@@ -8,6 +10,7 @@
   },
   "extends": [
     "prettier",
+    "plugin:@typescript-eslint/recommended",
     "plugin:node/recommended",
     "plugin:react/recommended"
   ],
@@ -29,7 +32,7 @@
     }]
   },
   "overrides": [{
-    "files": ["webpack.config.js", "test/**/*.js"],
+    "files": ["webpack.config.js", "test/**/*.js", "jest.config.ts"],
     "rules": {
       "node/no-unpublished-require": "off"
     }
