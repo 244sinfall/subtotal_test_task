@@ -1,27 +1,39 @@
 {
-  "name": "subtotal_test_task",
+  "name": "my-webpack-project",
   "version": "1.0.0",
-  "description": "https://github.com/SubtotalRu/subtotal_test_react",
-  "main": "index.js",
+  "description": "My webpack project",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack serve",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dmitry Filin",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.22.9",
     "@types/node": "^20.4.2",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@webpack-cli/generators": "^3.0.7",
+    "css-loader": "^6.8.1",
     "eslint": "^8.45.0",
     "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "html-webpack-plugin": "^5.5.3",
     "prettier": "^3.0.0",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
     "react": "^18.2.0",
