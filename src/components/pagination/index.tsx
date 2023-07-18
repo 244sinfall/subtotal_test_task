@@ -20,7 +20,7 @@ const Pagination = (props: PaginationProps) => {
                     <a
                         className="page-link"
                         href="#"
-                        onClick={() => props.onPaginate(props.current + 1)}
+                        onClick={() => props.onPaginate(props.current - 1)}
                     >
                         Назад
                     </a>
