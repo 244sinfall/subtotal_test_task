@@ -11,3 +11,8 @@ export type Launch = {
     date_unix: number;
     id: string;
 };
+
+export type ApiResponse = {
+    docs: Launch[];
+    totalPages: number;
+};

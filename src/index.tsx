@@ -3,6 +3,7 @@ import React from 'react';
 import App from './app';
 import { Provider } from 'react-redux';
 import store from './model/store';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const rootElement = document.querySelector('#root');
 
